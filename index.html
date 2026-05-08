@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Take the High Ground</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Monoton&display=swap');
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.85) 100%),
+      url("lava-tile.svg");
+    background-repeat: no-repeat, repeat;
+    background-size: cover, 256px 256px;
+    background-attachment: fixed, fixed;
+    font-family: 'Bungee', 'Impact', sans-serif;
+    color: #fff200;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  .scanlines::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.18) 0px,
+      rgba(0,0,0,0.18) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    z-index: 99;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 20px 20px;
+    flex-wrap: nowrap;
+  }
+
+  header img {
+    width: 120px;
+    height: auto;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 0 18px #ff6a00);
+  }
+
+  h1 {
+    font-family: 'Monoton', 'Impact', sans-serif;
+    font-weight: 400;
+    font-size: clamp(40px, 7vw, 96px);
+    margin: 0;
+    line-height: 1;
+    color: #ffd24a;
+    text-shadow:
+      0 0 4px #ff3a00,
+      0 0 18px #ff6a00,
+      0 0 40px #ff2200,
+      4px 4px 0 #1a0000;
+    letter-spacing: 4px;
+    transform: skewY(-1deg);
+  }
+
+  main {
+    max-width: 760px;
+    margin: 30px auto 60px;
+    padding: 0 24px;
+  }
+
+  ul.sites {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 18px;
+  }
+
+  ul.sites li a {
+    display: block;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #ff00aa 0%, #7a00b3 100%);
+    border: 4px solid #fff200;
+    border-radius: 8px;
+    box-shadow:
+      6px 6px 0 #000,
+      inset 0 0 0 2px #000;
+    color: #fff200;
+    text-decoration: none;
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(18px, 2.4vw, 26px);
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0 #000;
+    transition: transform 0.08s ease-out, box-shadow 0.08s ease-out, background 0.2s;
+  }
+
+  ul.sites li a:hover {
+    transform: translate(-3px, -3px);
+    box-shadow:
+      9px 9px 0 #000,
+      inset 0 0 0 2px #000;
+    background: linear-gradient(135deg, #39ff14 0%, #00b347 100%);
+    color: #1a0033;
+    text-shadow: 3px 3px 0 #fff200;
+  }
+
+  ul.sites li a:active {
+    transform: translate(3px, 3px);
+    box-shadow:
+      2px 2px 0 #000,
+      inset 0 0 0 2px #000;
+  }
+
+  .tbd {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  footer {
+    color: #39ff14;
+    font-family: 'Bungee', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    padding: 20px;
+    text-shadow: 2px 2px 0 #000;
+  }
+</style>
+</head>
+<body class="scanlines">
+
+<header>
+  <img src="retro-torch.gif" alt="flame">
+  <h1>Take the High Ground</h1>
+  <img src="retro-torch.gif" alt="flame">
+</header>
+
+<main>
+  <ul class="sites">
+    <li><a href="https://heyitsgeis.com">heyitsgeis.com &mdash; Jim</a></li>
+    <li><a href="https://mutable-states.com">mutable-states.com &mdash; Pete Su</a></li>
+    <li><a href="https://epagelhogan.substack.com">epagelhogan.substack.com &mdash; Elizabeth</a></li>
+    <li><a href="https://lafroscia.com">lafroscia.com &mdash; Alex</a></li>
+    <li><a href="https://austintooley.com">austintooley.com &mdash; Austin</a></li>
+    <li><a href="http://podracing.org/podracing/index.html">podracing.org &mdash; Emilee</a></li>
+    <li><a href="http://regulardegular.cool">regulardegular.cool &mdash; Emilee</a></li>
+    <li><a href="https://benquadinaros.org">benquadinaros.org &mdash; Finn</a></li>
+    <li><a href="https://www.youtube.com/@yinzerfishing">Yinzer Fishing &mdash; Marty</a></li>
+  </ul>
+</main>
+
+<footer>&#9632; BEST VIEWED AT 800&times;600 &#9632;</footer>
+
+<script>
+  (function shuffleSites() {
+    const list = document.querySelector('ul.sites');
+    if (!list) return;
+    const items = Array.from(list.children);
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+    items.forEach(li => list.appendChild(li));
+  })();
+</script>
+</body>
+</html>
